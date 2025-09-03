@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot App</title>
+</head>
+<body>
+    <h1>Add New Credential</h1>
+    <form action="/save" method="post">
+        <label for="ip">IP Address:</label>
+        <input type="text" id="ip" name="ip"><br><br>
+        <label for="port">Port:</label>
+        <input type="text" id="port" name="port"><br><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Save">
+    </form>
+
+    <h2>Stored Credentials</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>IP Address</th>
+                <th>Port</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="credential : ${credentials}">
+                <td th:text="${credential.id}"></td>
+                <td th:text="${credential.ip}"></td>
+                <td th:text="${credential.port}"></td>
+                <td th:text="${credential.username}"></td>
+                <td th:text="${credential.password}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
